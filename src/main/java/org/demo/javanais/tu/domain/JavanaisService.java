@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public class JavanaisService {
 
     public static final String JAVANAIS_SYLLABE = "av";
+
     public static final String REGEX_JAVANAIS_AVEC_VOYELLE = "av([aeiouAEIOU])";
     public static final String REGEX_VOYELLE_DEBUT_PHRASE = "^[aeiouAEIOU].*";
     public static final String REGEX_CONSONNE_AVEC_VOYELLES = "([^aeiouAEIOU])([aeiouAEIOU]+)";
@@ -31,7 +32,7 @@ public class JavanaisService {
     }
 
     private String recupererPhraseEnJavanais(String phrase) {
-        String phraseJavanais = phrase;
+        String phraseEnJavanais = phrase;
 
         Pattern pattern = Pattern.compile(REGEX_CONSONNE_AVEC_VOYELLES);
         Matcher matcher = pattern.matcher(phrase);
@@ -45,14 +46,14 @@ public class JavanaisService {
                     .concat(JAVANAIS_SYLLABE)
                     .concat(voyelles);
 
-            phraseJavanais = phraseJavanais.replace(syllabe, syllabeJavanais);
+            phraseEnJavanais = phraseEnJavanais.replace(syllabe, syllabeJavanais);
         }
 
-        return phraseJavanais;
+        return phraseEnJavanais;
     }
 
     private String recupererPhraseEnFrancais(String phrase) {
-        String phraseFrancais = phrase;
+        String phraseEnFrancais = phrase;
 
         Pattern pattern = Pattern.compile(REGEX_JAVANAIS_AVEC_VOYELLE);
         Matcher matcher = pattern.matcher(phrase);
@@ -60,9 +61,9 @@ public class JavanaisService {
         while (matcher.find()) {
             String syllabe = matcher.group(0);
             String voyelle = matcher.group(1);
-            phraseFrancais = phraseFrancais.replace(syllabe, voyelle);
+            phraseEnFrancais = phraseEnFrancais.replace(syllabe, voyelle);
         }
 
-        return phraseFrancais;
+        return phraseEnFrancais;
     }
 }

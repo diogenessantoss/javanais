@@ -2,31 +2,24 @@ package org.demo.javanais.tu.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(classes = JavanaisService.class)
 class JavanaisServiceTest {
 
     @Autowired
     private JavanaisService javanaisService;
 
     @ParameterizedTest
-    @CsvSource({
-            "au, avau",
-            "chante, chavantave",
-            "train, travain",
-            "bonjour, bavonjavour",
-            "exemple, avexavemplave",
-            "allumettes, avallavumavettaves",
-            "avril, avavravil",
-            "avoir, avavavoir",
-            "cadavre, cavadavavrave",
-            "je suis ici, jave savuis avicavi"
-    })
+    @MethodSource("valeursJavanais")
     @DisplayName("Teste que la méthode 'calculerJavanais' retourne les phrases/les mots en format javanais")
     void calculerJavanais(String valeur, String valeurAttendue) {
         // WHEN
@@ -36,30 +29,33 @@ class JavanaisServiceTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "avau, au",
-            "chavantave, chante",
-            "travain, train",
-            "bavonjavour, bonjour",
-            "avexavemplave, exemple",
-            "avallavumavettaves, allumettes",
-            "jave savuis avicavi, je suis ici",
-            "avavravil, avril",
-            "avavavoir, avoir",
-            "cavadavavrave, cadavre",
-            "avril, avril",
-            "avocat, avocat"
-    })
+    @MethodSource("valeursJavanais")
     @DisplayName("Teste que la méthode 'calculerFrancais' retourne les phrases/les mots en format français")
-    void calculerFrancais(String valeur, String valeurAttendue) {
+    void calculerFrancais(String valeurAttendue, String valeur) {
         // WHEN
         String francais = javanaisService.calculerFrancais(valeur);
         // THEN
         assertThat(francais).isEqualTo(valeurAttendue);
     }
 
+    public static Stream<Arguments> valeursJavanais() {
+        return Stream.of(
+                Arguments.of("au", "avau"),
+                Arguments.of("chante", "chavantave"),
+                Arguments.of("train", "travain"),
+                Arguments.of("bonjour", "bavonjavour"),
+                Arguments.of("exemple", "avexavemplave"),
+                Arguments.of("allumettes", "avallavumavettaves"),
+                Arguments.of("avril", "avavravil"),
+                Arguments.of("avoir", "avavavoir"),
+                Arguments.of("cadavre", "cavadavavrave"),
+                Arguments.of("je suis ici", "jave savuis avicavi")
+        );
+    }
+
     @ParameterizedTest
     @CsvSource({
+            "av, av",
             "avril, avril",
             "avocat, avocat",
             "cadavre, cadavre",
