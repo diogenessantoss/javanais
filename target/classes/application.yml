@@ -1,8 +1,2 @@
-info:
-  app:
-    name: 'javanais'
-    version: '0.0.1-SNAPSHOT'
-    description: API permettant de récupérer les données de coordonnées et d'état civil d'un usager à partir d'un identifiant individu ou d'un identifiant usager
-
 server:
   port: 2050
