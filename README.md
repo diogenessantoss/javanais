@@ -1,4 +1,4 @@
-## <p align="center">Service RESTFul qui trasnforme une phrase française en javanais et inversement</p>
+## <p align="center">Service RESTFul qui transforme une phrase française en javanais et inversement</p>
 
 Le Javanais est de l'argot consistant à insérer des syllabes parasitaires dans les mots. Voici les règles simplifiées implémentées dans ce service :
 - Dans un mot, "av" est ajouté entre chaque consonne suivie d'une voyelle.
