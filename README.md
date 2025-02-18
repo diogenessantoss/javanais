@@ -10,6 +10,9 @@ Quelques exemples :
 - "exemple" devient "avexavemplave"
 - "au" devient "avau"
 
+### Notes et références  
+- [Javanais (argot)](https://fr.wikipedia.org/wiki/Javanais_%28argot%29)
+
 ### Stack technique
 - Java 17
 - Spring Boot
