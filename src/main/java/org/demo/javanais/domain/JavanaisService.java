@@ -1,43 +1,41 @@
 package org.demo.javanais.domain;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-@Slf4j
 @Service
 public class JavanaisService {
 
     public String calculerJavanais(String valeur) {
-        char[] caracteres = valeur.toCharArray();
-        StringBuilder retour = new StringBuilder();
+        StringBuilder javanais = new StringBuilder();
 
-        for (int indice = 0; indice < caracteres.length; indice++) {
-            char caractere = caracteres[indice];
+        for (int indice = 0; indice < valeur.length(); indice++) {
+            char caractere = valeur.charAt(indice);
 
             if (estConsonne(caractere)) {
-                retour.append(caractere);
+                javanais.append(caractere);
             } else {
-                int indexConsonne = recupererIndiceProchaineConsonne(indice, caracteres);
-                retour.append("av");
-                retour.append(valeur, indice, indexConsonne + 1);
+                int indexConsonne = recupererIndiceProchaineConsonne(indice, valeur);
+                javanais.append("av");
+                javanais.append(valeur, indice, indexConsonne + 1);
                 indice = indexConsonne;
             }
         }
-        return retour.toString();
+        return javanais.toString();
     }
 
-    private int recupererIndiceProchaineConsonne(int indiceDebut, char[] caracteres) {
-        int indiceConsonne = caracteres.length - 1;
-        for (int indice = indiceDebut; indice < caracteres.length; indice++) {
-            if (estConsonne(caracteres[indice])) {
-                indiceConsonne = indice;
-                break;
+    private int recupererIndiceProchaineConsonne(int indiceDebut, String valeur) {
+        int taille = valeur.length();
+        int indiceDernierCaractere = taille - 1;
+
+        for (int indice = indiceDebut; indice < taille; indice++) {
+            if (estConsonne(valeur.charAt(indice))) {
+                return indice;
             }
         }
-        return indiceConsonne;
+        return indiceDernierCaractere;
     }
 
     private boolean estConsonne(char caracter) {
-        return !(caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u');
+        return !String.valueOf(caracter).matches("[aeiou]");
     }
 }
