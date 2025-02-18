@@ -1,7 +1,7 @@
 package org.demo.javanais.tc;
 
 import lombok.SneakyThrows;
-import org.demo.javanais.tu.domain.JavanaisService;
+import org.demo.javanais.domain.JavanaisService;
 import org.demo.javanais.web.JavanaisController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

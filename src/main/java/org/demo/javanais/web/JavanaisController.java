@@ -1,7 +1,7 @@
 package org.demo.javanais.web;
 
 import lombok.AllArgsConstructor;
-import org.demo.javanais.tu.domain.JavanaisService;
+import org.demo.javanais.domain.JavanaisService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

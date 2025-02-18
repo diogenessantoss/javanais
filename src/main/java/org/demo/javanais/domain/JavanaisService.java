@@ -1,4 +1,4 @@
-package org.demo.javanais.tu.domain;
+package org.demo.javanais.domain;
 
 import org.springframework.stereotype.Service;
 
