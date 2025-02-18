@@ -41,6 +41,7 @@ class JavanaisServiceTest {
     public static Stream<Arguments> valeursJavanais() {
         return Stream.of(
                 Arguments.of("au", "avau"),
+                Arguments.of("moyen", "mavoyen"),
                 Arguments.of("chante", "chavantave"),
                 Arguments.of("train", "travain"),
                 Arguments.of("bonjour", "bavonjavour"),

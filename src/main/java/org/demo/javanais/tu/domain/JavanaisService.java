@@ -11,9 +11,9 @@ public class JavanaisService {
 
     public static final String JAVANAIS_SYLLABE = "av";
 
-    public static final String REGEX_JAVANAIS_AVEC_VOYELLE = "av([aeiouAEIOU])";
-    public static final String REGEX_VOYELLE_DEBUT_PHRASE = "^[aeiouAEIOU].*";
-    public static final String REGEX_CONSONNE_AVEC_VOYELLES = "([^aeiouAEIOU])([aeiouAEIOU]+)";
+    public static final String REGEX_JAVANAIS_AVEC_VOYELLE = "av([aeiouyAEIOUY])";
+    public static final String REGEX_VOYELLE_DEBUT_PHRASE = "^[aeiouyAEIOUY].*";
+    public static final String REGEX_CONSONNE_AVEC_VOYELLES = "([^aeiouyAEIOUY])([aeiouyAEIOUY]+)";
 
     public String calculerFrancais(String phrase) {
         String phraseFrancais = recupererPhraseEnFrancais(phrase);
