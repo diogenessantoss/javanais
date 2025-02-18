@@ -11,10 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @SpringBootTest
-class JavanaisFrancaisServiceTest {
+class JavanaisServiceTest {
 
     @Autowired
-    private JavanaisFrancaisService javanaisFrancaisService;
+    private JavanaisService javanaisService;
 
     @ParameterizedTest
     @CsvSource({
@@ -28,7 +28,7 @@ class JavanaisFrancaisServiceTest {
     })
     void calculerJavanais(String valeur, String valeurAttendue) {
         // WHEN
-        String javanais = javanaisFrancaisService.calculerJavanais(valeur);
+        String javanais = javanaisService.calculerJavanais(valeur, null);
         // THEN
         assertThat(javanais).isEqualTo(valeurAttendue);
     }
@@ -46,7 +46,7 @@ class JavanaisFrancaisServiceTest {
     @SneakyThrows
     void calculerFrancais(String valeur, String valeurAttendue) {
         // WHEN
-        String francais = javanaisFrancaisService.calculerFrancais(valeur);
+        String francais = javanaisService.calculerFrancais(valeur, null);
         // THEN
         assertThat(francais).isEqualTo(valeurAttendue);
     }
@@ -59,7 +59,7 @@ class JavanaisFrancaisServiceTest {
         String messageErreur = String.format("Le mot/La phrase %s n'est pas au format javanais", valeur);
         // WHEN && THEN
         assertThatExceptionOfType(ControleJavanaisException.class)
-                .isThrownBy(() -> javanaisFrancaisService.calculerFrancais(valeur))
+                .isThrownBy(() -> javanaisService.calculerFrancais(valeur, null))
                 .withMessage(messageErreur);
     }
 }
